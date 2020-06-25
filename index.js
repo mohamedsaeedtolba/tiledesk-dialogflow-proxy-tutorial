@@ -62,7 +62,7 @@ app.post("/bot/:botid", (req, res) => {
     console.log('Error: ', err);
   })
 })
-app.get('/', function (req, res) {
+app.get('/bot', function (req, res) {
   res.render('index', {});
 });
 /*
