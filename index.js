@@ -62,8 +62,6 @@ app.post("/bot/:botid", (req, res) => {
     console.log('Error: ', err);
   })
 })
-app.get('/', function (req, res) {
-  res.render('index', {});
 });
 // Tutorial 2 - Advanced tutorial using 'micro language' to render buttons or images
 app.post("/microlang-bot/:botid", (req, res) => {
