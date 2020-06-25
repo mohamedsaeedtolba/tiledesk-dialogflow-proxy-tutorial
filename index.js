@@ -62,6 +62,9 @@ app.post("/bot/:botid", (req, res) => {
     console.log('Error: ', err);
   })
 })
+app.get('/bot/firstbot', function (req, res) {
+  res.render('index', {});
+});
 /*
 // Tutorial 2 - Advanced tutorial using 'micro language' to render buttons or images
 app.post("/microlang-bot/:botid", (req, res) => {
@@ -200,6 +203,7 @@ app.post('/dfwebhook/:project_id', (req, res) => {
   }
 });
 */
+
 var port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log('server started');
