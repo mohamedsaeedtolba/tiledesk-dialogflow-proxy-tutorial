@@ -62,36 +62,9 @@ app.post("/bot/:botid", (req, res) => {
     console.log('Error: ', err);
   })
 })
-app.get("/bot/:botid", (req, res) => {
-  // for cloud apis initialize like the this:
-  const tdclient = new TiledeskChatbotClient({request: req})
-  // for on-prem installations specify your endpoint like this:
-  // const tdclient = new TiledeskChatbotClient({request: req, APIURL: 'YOUR API ENDPOINT'});
-  const botid = req.params.botid;
-  const conversation = tdclient.supportRequest
-  // immediately reply back
-  res.status(200).send({"success":true});
-  // reply messages are sent asynchronously
-  const dialogflow_session_id = conversation.request_id
-  const lang = 'en-EN' // lang must be the same of the Dialogflow Agent
-  const credentials = JSON.parse(process.env[botid])
-  runDialogflowQuery(tdclient.text, dialogflow_session_id, lang, credentials)
-  .then(function(result) {
-    console.log("query result: ", JSON.stringify(result))
-    console.log("is fallback:", result.intent.isFallback)
-    console.log("confidence:", result.intentDetectionConfidence)
-    // intentDetectionConfidence
-    if(res.statusCode === 200) {
-      const reply_text = result['fulfillmentText']
-      var msg = {
-        "text": reply_text
-      }
-      tdclient.sendMessage(msg, function (err) {
-        console.log("Message sent.");
-      })
-    }
-  })
-/*
+app.get('/', function (req, res) {
+  res.render('index', {});
+});
 // Tutorial 2 - Advanced tutorial using 'micro language' to render buttons or images
 app.post("/microlang-bot/:botid", (req, res) => {
   const tdclient = new TiledeskChatbotClient({request: req});
@@ -228,7 +201,6 @@ app.post('/dfwebhook/:project_id', (req, res) => {
     })
   }
 });
-*/
 
 var port = process.env.PORT || 3000;
 app.listen(port, () => {
