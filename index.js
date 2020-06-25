@@ -62,7 +62,7 @@ app.post("/bot/:botid", (req, res) => {
     console.log('Error: ', err);
   })
 })
-
+/*
 // Tutorial 2 - Advanced tutorial using 'micro language' to render buttons or images
 app.post("/microlang-bot/:botid", (req, res) => {
   const tdclient = new TiledeskChatbotClient({request: req});
@@ -199,7 +199,7 @@ app.post('/dfwebhook/:project_id', (req, res) => {
     })
   }
 });
-
+*/
 var port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log('server started');
