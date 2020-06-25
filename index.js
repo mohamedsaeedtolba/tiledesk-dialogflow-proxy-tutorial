@@ -28,7 +28,7 @@ async function runDialogflowQuery(text, sessionId, language_code, credentials) {
   return result;
 }
 
-// Tutorial 1 - Basic Dialogflow extarnal endpoint
+// Tutorial 1 - basic dialogflow extarnal endpoint
 app.post("/bot/:botid", (req, res) => {
   // for cloud apis initialize like the this:
   const tdclient = new TiledeskChatbotClient({request: req})
